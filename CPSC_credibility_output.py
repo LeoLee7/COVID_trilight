@@ -234,34 +234,34 @@ class CPSC():
                 self.p_value[m, n] = (cnt + 1) / (len(A_train) + 1)
         return self.p_value
 
-# if __name__ == '__main__':
-#
-#         dataset_from_mat = loadmat("full_trainingset_categories.mat")
-#         all_dataset_raw = dataset_from_mat['full_trainingset']
-#
-#
-#
-#         # set label
-#         all_label = []
-#         for i in range(12):
-#             for j in range(50):
-#                 all_label.append(i)
-#         all_label=np.array(all_label)
-#
-#         # data preprocessing
-#         scaler.fit(all_dataset_raw)
-#         processed_dataset = scaler.transform(all_dataset_raw)
-#
-#         #dataset partition
-#         x_train,x_other,y_train,y_other=train_test_split(processed_dataset,all_label,test_size=360, random_state=10)
-#         x_pro_train,x_cal_train,y_pro_train,y_cal_train=train_test_split(x_train,y_train,test_size=120, random_state=10)
-#         x_active,x_cal_test,y_active,y_cal_test=train_test_split(x_other,y_other,test_size=120, random_state=10)
-#         x_val,x_test,y_val,y_test=train_test_split(x_cal_test,y_cal_test,test_size=60, random_state=10)
-#
-#
-#         cpsc=CPSC(0.01,0.5,1000)#delta,epsilon,temperature
-#         cpsc.fit(x_pro_train,y_pro_train,x_cal_train,y_cal_train)
-#         y_predict=cpsc.predict_CPSC(x_test)
-#         print(accuracy_score(y_test,y_predict))
-#
-#
+if __name__ == '__main__':
+
+        dataset_from_mat = loadmat("full_trainingset_categories.mat")
+        all_dataset_raw = dataset_from_mat['full_trainingset']
+
+
+
+        # set label
+        all_label = []
+        for i in range(12):
+            for j in range(50):
+                all_label.append(i)
+        all_label=np.array(all_label)
+
+        # data preprocessing
+        scaler.fit(all_dataset_raw)
+        processed_dataset = scaler.transform(all_dataset_raw)
+
+        #dataset partition
+        x_train,x_other,y_train,y_other=train_test_split(processed_dataset,all_label,test_size=360, random_state=10)
+        x_pro_train,x_cal_train,y_pro_train,y_cal_train=train_test_split(x_train,y_train,test_size=120, random_state=10)
+        x_active,x_cal_test,y_active,y_cal_test=train_test_split(x_other,y_other,test_size=120, random_state=10)
+        x_val,x_test,y_val,y_test=train_test_split(x_cal_test,y_cal_test,test_size=60, random_state=10)
+
+
+        cpsc=CPSC(0.01,0.5,1000)#delta,epsilon,temperature
+        cpsc.fit(x_pro_train,y_pro_train,x_cal_train,y_cal_train)
+        y_predict=cpsc.predict_CPSC(x_test)
+        print(accuracy_score(y_test,y_predict))
+
+
