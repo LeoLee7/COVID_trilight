@@ -11,4 +11,7 @@ age;sex 1=male;Coronary heart disease;Chronic liver disease;Chronic kidney disea
 
 3. Make prediction and output the reliability information.
 Start the terminal in the directory of the model (Deployment). Run the model using the following command line.
+
+```shell
 python COVID-19_prediction --radiomics_data <save_root\final_merge_feature.csv> --lab_data <lab_input.csv>
+```
